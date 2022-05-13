@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  # MongoDB server
+  mongo-server:
+    container_name: mongo-server
+    image: mongo:4.4.14-focal
+    networks:
+    - moi-network
+    volumes:
+      - type: bind
+        source: /var/moi-network/mongodb
+        target: /data/db 
+    restart: always 
+
+networks:
+  moi-network:
+    external: false
+    name: moi-network
